@@ -1,8 +1,8 @@
-import { IAuthorizationServiceProvider } from './iauthorization.service-provider';
+import { IAuthorizationServiceProvider } from '../../../../projects/jli-auth/src/lib/services/service-providers/iauthorization.service-provider';
 
-import { Permission } from 'src/app/models/permission';
+import { Permission } from 'projects/jli-auth/src/lib/models/permission';
 
-import { CriteriaPermission } from 'src/app/models/Criterias/criteria-permission';
+import { CriteriaPermission } from 'projects/jli-auth/src/lib/models/Criterias/criteria-permission';
 
 import { Observable, of } from 'rxjs';
 
@@ -13,7 +13,6 @@ export class MockAuthorizationServiceProvider implements IAuthorizationServicePr
         let permissions: Array<Permission> = [];
         
         permissions.push({Name: 'CanReadDemande'});
-        permissions.push({Name: 'CanReadBon'});
 
         return permissions;
     }

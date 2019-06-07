@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "jli-auth": [
+        "dist/jli-auth"
+      ],
+      "jli-auth/*": [
+        "dist/jli-auth/*"
+      ]
+    }
   }
 }

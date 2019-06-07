@@ -1,6 +1,6 @@
 import { ISuiviDeTransportServiceProvider } from './isdt.service-provider';
 import { UserSDT } from 'src/app/models/user-sdt';
-import { User } from 'src/app/models/user';
+import { User } from 'projects/jli-auth/src/lib/models/user';
 import { Observable, of } from 'rxjs';
 
 export class MockSuiviDeTransportServiceProvider implements ISuiviDeTransportServiceProvider {

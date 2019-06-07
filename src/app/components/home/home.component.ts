@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
-import { IUserService } from 'src/app/services/user-services/iuser.service';
-import { User } from 'src/app/models/user';
-import { Permission } from 'src/app/models/permission';
-import { IAuthorizationService } from 'src/app/services/auth-services/iauthorization.service';
+import { IUserService } from 'projects/jli-auth/src/lib/services/user-services/iuser.service';
+import { User } from 'projects/jli-auth/src/lib/models/user';
+import { Permission } from 'projects/jli-auth/src/lib/models/permission';
+import { IAuthorizationService } from 'projects/jli-auth/src/lib/services/auth-services/iauthorization.service';
 
 @Component({
   selector: 'app-home',

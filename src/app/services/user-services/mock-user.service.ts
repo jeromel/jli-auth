@@ -1,5 +1,5 @@
-import { IUserService } from './iuser.service';
-import { User } from '../../models/user';
+import { IUserService } from '../../../../projects/jli-auth/src/lib/services/user-services/iuser.service';
+import { User } from '../../../../projects/jli-auth/src/lib/models/user';
 import { Observable , of, Subject } from 'rxjs';
 import { ISuiviDeTransportServiceProvider } from '../service-providers/isdt.service-provider';
 import { Inject } from '@angular/core';

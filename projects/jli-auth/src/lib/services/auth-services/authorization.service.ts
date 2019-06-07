@@ -64,7 +64,6 @@ export class AuthorizationService implements IAuthorizationService {
                     return perms.some(pp => { return pp.Name == permission.Name});
                 })) {
                     ret = true;
-                    console.debug('yes it has permission !');
                 }
             }
         }

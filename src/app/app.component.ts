@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { IIdentityService } from './services/identity-services/iidentity.service';
-import { IUserService } from './services/user-services/iuser.service';
+import { IIdentityService } from '../../projects/jli-auth/src/lib/services/identity-services/iidentity.service';
+import { IUserService } from '../../projects/jli-auth/src/lib/services/user-services/iuser.service';
 import { Router, Params } from '@angular/router';
 
 @Component({

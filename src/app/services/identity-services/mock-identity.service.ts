@@ -1,6 +1,6 @@
 import { OnInit, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IIdentityService } from './iidentity.service';
+import { IIdentityService } from '../../../../projects/jli-auth/src/lib/services/identity-services/iidentity.service';
 
 @Injectable()
 export class MockIdentityService implements IIdentityService {
