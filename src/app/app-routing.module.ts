@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { CallbackComponent } from './components/callback/callback.component';
+import { HomeComponent } from './components/home/home.component';
+import { BonsComponent } from './components/bons/bons.component';
+import { DemandesComponent } from './components/demandes/demandes.component';
+import { AuthGuardService } from './services/auth-services/auth-guard.service';
+
+const routes: Routes = [
+    { path: 'callback', component: CallbackComponent, pathMatch: 'full' },
+    { path: 'home', component: HomeComponent, pathMatch: 'full' },
+    { path: 'bons', component: BonsComponent, pathMatch: 'full' },
+    { 
+      path: 'demandes', 
+      canActivate: [AuthGuardService],
+      data: { 'auth': [{ Name: 'CanReadDemande' }, { Name: 'CanWriteDemande'}] },
+      component: DemandesComponent,
+      pathMatch: 'full'
+    }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
