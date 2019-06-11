@@ -16,6 +16,12 @@ import { MockAuthorizationServiceProvider } from './services/service-providers/m
 import { MockSuiviDeTransportServiceProvider } from './services/service-providers/mock-sdt.service-provider';
 import { FactoryCriteriaPermissionInitService } from './services/factory-criteria-permission-init.service';
 import { FactoryRedirectComponentRouteInitService } from './services/factory-redirect-component-route-init.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './services/system/token.interceptor';
+import { OAuthStorage, OAuthModule } from 'angular-oauth2-oidc';
+import { BrowserTokenStoreService } from './services/system/token-store.service';
+import { LogoutComponent } from 'projects/jli-auth/src/lib/components/logout/logout.component';
+import { AuthInitializerService } from 'projects/jli-auth/src/lib/services/auth-initializer-services/auth-initializer.service';
 
 @NgModule({
   declarations: [
@@ -24,11 +30,14 @@ import { FactoryRedirectComponentRouteInitService } from './services/factory-red
     HomeComponent,
     MenuComponent,
     DemandesComponent,
-    BonsComponent
+    BonsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    OAuthModule.forRoot(),
   ],
   providers: [
     {
@@ -56,11 +65,25 @@ import { FactoryRedirectComponentRouteInitService } from './services/factory-red
       provide: 'IAuthorizationServiceProvider',
       useClass: MockAuthorizationServiceProvider
     },
+    {
+      provide: 'IAuthInitializerService',
+      useClass: AuthInitializerService
+    },
     AuthGuardService,
     {
       provide: 'ISuiviDeTransportServiceProvider',
       useClass: MockSuiviDeTransportServiceProvider
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: OAuthStorage,
+      useClass: BrowserTokenStoreService
+    },
+
   ],
   bootstrap: [AppComponent]
 })

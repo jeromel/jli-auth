@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { IIdentityService } from '../../projects/jli-auth/src/lib/services/identity-services/iidentity.service';
 import { IUserService } from '../../projects/jli-auth/src/lib/services/user-services/iuser.service';
 import { Router, Params } from '@angular/router';
+import { IAuthInitializerService } from 'projects/jli-auth/src/lib/services/auth-initializer-services/iauth-initializer-service';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,15 @@ export class AppComponent implements OnInit {
   public title = 'test-id-auth';
 
   constructor(
-    @Inject('IIdentityService') private identityService: IIdentityService,
+    @Inject('IAuthInitializerService') private authInitializerService: IAuthInitializerService,
     @Inject('IUserService') private userService: IUserService,
     private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.simulateCallbackReturnFromIdSrv();
+    console.debug('app init');
+    this.authInitializerService.initialize();
   }
 
   public simulateCallbackReturnFromIdSrv(): void {
