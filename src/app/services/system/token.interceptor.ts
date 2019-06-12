@@ -11,9 +11,7 @@ export class TokenInterceptor implements HttpInterceptor {
     constructor(private injector: Injector) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.debug('intercept:');
         if (this.getAuthService().hasValidAccessToken()) {
-            console.debug('intercept:auth');
             request = request.clone({
                 setHeaders: {
                     Authorization: this.getAuthService().authorizationHeader()

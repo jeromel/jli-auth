@@ -22,10 +22,8 @@ export class AuthInitializerService implements IAuthInitializerService{
 
     public initialize(): void {
         if (this.identityService.isUserAuthenticated()) {
-            console.debug('authenticated');
             this.getUserAuthInformation();
           } else {
-            console.debug('InitFlow.start');
             this.identityService.initialize();
             this.identityService.whenUserAuthenticated().subscribe(res => {
               if (true == res) {
