@@ -6,6 +6,6 @@ import { LogoutComponent } from './components/logout/logout.component';
   declarations: [CallbackComponent, LogoutComponent],
   imports: [
   ],
-  exports: [CallbackComponent]
+  exports: [CallbackComponent, LogoutComponent]
 })
 export class JliAuthModule { }
