@@ -5,7 +5,7 @@ import { Params, Router } from '@angular/router';
 import { IAuthorizationService } from '../auth-services/iauthorization.service';
 import { IUserService } from '../user-services/iuser.service';
 import { IFactoryCriteriaPermissionInitService } from '../ifactory-criteria-permission-init.service';
-import { IFactoryRedirectComponentRouteInitService } from 'jli-auth/lib/services/ifactory-redirect-component-route-init.service';
+import { IFactoryRedirectComponentRouteInitService } from '../ifactory-redirect-component-route-init.service';
 import { CriteriaPermission } from '../../models/models';
 
 export class AuthInitializerService implements IAuthInitializerService{

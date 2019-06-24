@@ -6,3 +6,5 @@ export * from './ifactory-criteria-permission-init.service';
 export * from './ifactory-redirect-component-route-init.service';
 export * from './service-providers/iauthorization.service-provider';
 export * from './user-services/iuser.service';
+export * from './auth-initializer-services/auth-initializer.service';
+export * from './auth-initializer-services/iauth-initializer-service';
