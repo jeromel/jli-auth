@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CallbackComponent } from '../../projects/jli-auth/src/lib/components/callback/callback.component';
 import { HomeComponent } from './components/home/home.component';
 import { BonsComponent } from './components/bons/bons.component';
 import { DemandesComponent } from './components/demandes/demandes.component';
 import { AuthGuardService } from '../../projects/jli-auth/src/lib/services/auth-services/auth-guard.service';
+import { CallbackComponent } from './components/callback/callback.component';
+import { LogoutComponent } from './components/logout/logout/logout.component';
 
 const routes: Routes = [
     { path: 'callback', component: CallbackComponent, pathMatch: 'full' },
@@ -21,7 +22,14 @@ const routes: Routes = [
       data: { 'auth': [{ Name: 'CanReadDemande' }, { Name: 'CanWriteDemande'}] },
       component: DemandesComponent,
       pathMatch: 'full'
-    }
+    },
+    {
+      path: 'logout',
+      canActivate: [AuthGuardService],
+      data: { 'auth': [] },
+      component: LogoutComponent,
+      pathMatch: 'full'
+    },
 ];
 
 @NgModule({

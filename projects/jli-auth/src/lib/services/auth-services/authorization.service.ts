@@ -58,9 +58,9 @@ export class AuthorizationService implements IAuthorizationService {
     public hasOneOfPermissions(perms: Array<Permission>): boolean {
         let ret: boolean = false;
         
-        if (perms && perms.length > 0) {
+        if (perms) {
             if (this._permissions) {
-                if (this._permissions.some(permission => {
+                if (perms.length == 0 || this._permissions.some(permission => {
                     return perms.some(pp => { return pp.Name == permission.Name});
                 })) {
                     ret = true;

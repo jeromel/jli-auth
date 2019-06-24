@@ -1,6 +1,6 @@
 {
   "name": "test-id-auth",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "readme": "https://github.com/jeromel/jli-auth/blob/develop/README.md",
   "scripts": {
@@ -29,6 +29,7 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
+    "angular-oauth2-oidc": "^5.0.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

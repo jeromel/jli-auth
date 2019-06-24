@@ -12,7 +12,7 @@ export class MockAuthorizationServiceProvider implements IAuthorizationServicePr
     private fakePermissions(): Array<Permission> {
         let permissions: Array<Permission> = [];
         
-        permissions.push({Name: 'CanReadDemande'});
+        permissions.push(new Permission('CanReadDemande'));
 
         return permissions;
     }

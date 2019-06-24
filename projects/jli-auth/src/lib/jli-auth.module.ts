@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CallbackComponent } from './components/callback/callback.component';
+import { JliCallbackComponent } from './components/jli-callback/jli-callback.component';
+import { JliLogoutComponent } from './components/jli-logout/jli-logout.component';
 
 @NgModule({
-  declarations: [CallbackComponent],
+  declarations: [JliCallbackComponent, JliLogoutComponent],
   imports: [
   ],
-  exports: [CallbackComponent]
+  exports: [JliCallbackComponent, JliLogoutComponent]
 })
 export class JliAuthModule { }
