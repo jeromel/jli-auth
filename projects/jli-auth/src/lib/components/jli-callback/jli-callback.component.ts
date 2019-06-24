@@ -1,13 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { IIdentityService } from '../../services/identity-services/iidentity.service';
 import { IAuthInitializerService } from '../../services/auth-initializer-services/iauth-initializer-service';
 
 @Component({
-  selector: 'app-callback',
-  templateUrl: './callback.component.html',
-  styleUrls: ['./callback.component.css']
+  selector: 'jli-callback',
+  templateUrl: './jli-callback.component.html',
+  styleUrls: ['./jli-callback.component.css']
 })
-export class CallbackComponent implements OnInit {
+export class JliCallbackComponent implements OnInit {
 
   constructor(
     @Inject('IAuthInitializerService') private authInitializerService: IAuthInitializerService

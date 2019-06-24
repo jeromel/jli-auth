@@ -19,7 +19,7 @@ export class MockSuiviDeTransportServiceProvider implements ISuiviDeTransportSer
         user.Firstname = 'Jérôme';
         user.Lastname = 'Libbrecht';
         user.Email = "jlibbrecht@toto.com";
-        user.Groups = [ { Name: 'GroupA'}, { Name: 'GroupB'} ];
+        user.Groups = [ { Id: 0, Name: 'GroupA'}, { Id: 1, Name: 'GroupB'} ];
 
         userSDT.User = user;
 

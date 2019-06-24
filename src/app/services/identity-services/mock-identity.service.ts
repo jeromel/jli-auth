@@ -27,8 +27,6 @@ export class MockIdentityService implements IIdentityService {
         this.oAuthService.setupAutomaticSilentRefresh();
     }
     public isUserAuthenticated(): boolean {
-        console.debug(this.oAuthService.hasValidIdToken());
-        console.debug(this.oAuthService.hasValidAccessToken());
         return (this.oAuthService.hasValidIdToken() && this.oAuthService.hasValidAccessToken());
     }
 
