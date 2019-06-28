@@ -5,8 +5,8 @@ import { Params, Router } from '@angular/router';
 import { IAuthorizationService } from '../auth-services/iauthorization.service';
 import { IUserService } from '../user-services/iuser.service';
 import { IFactoryCriteriaPermissionInitService } from '../ifactory-criteria-permission-init.service';
-import { IFactoryRedirectComponentRouteInitService } from '../ifactory-redirect-component-route-init.service';
 import { CriteriaPermission } from '../../models/models';
+import { Subject, Observable } from 'rxjs';
 
 export class AuthInitializerService implements IAuthInitializerService{
     constructor(
@@ -14,10 +14,14 @@ export class AuthInitializerService implements IAuthInitializerService{
         @Inject('IAuthorizationService') private authorizationService: IAuthorizationService,
         @Inject('IUserService') private userService: IUserService,
         @Inject('IFactoryCriteriaPermissionInitService') private factoryCriteriaPermissionInitService: IFactoryCriteriaPermissionInitService,
-        @Inject('IFactoryRedirectComponentRouteInitService') private factoryRedirectComponentRouteInitService: IFactoryRedirectComponentRouteInitService,
         private router: Router,
     ) {
 
+    }
+
+    private _whenInitialized: Subject<boolean> = new Subject<boolean>();
+    public whenInitialized(): Observable<boolean> {
+      return this._whenInitialized.asObservable();
     }
 
     public initialize(): void {
@@ -37,11 +41,7 @@ export class AuthInitializerService implements IAuthInitializerService{
         this.userService.getUser(false).subscribe(user => {
             let criteria: CriteriaPermission = this.factoryCriteriaPermissionInitService.getCriteriaPermissionForInit(user);
             this.authorizationService.initializePermissions(criteria, true).subscribe(perms => {
-              let qParam: Params;
-              
-              let route: string = this.factoryRedirectComponentRouteInitService.GetComponentRouteForAfterInit(user, perms);
-      
-              this.router.navigate([route], { queryParams: qParam });
+              this._whenInitialized.next(true);
             });
           })
     }

@@ -14,7 +14,6 @@ import { AuthGuardService } from '../../projects/jli-auth/src/lib/services/auth-
 import { MockAuthorizationServiceProvider } from './services/service-providers/mock-authorization.service-provider';
 import { MockSuiviDeTransportServiceProvider } from './services/service-providers/mock-sdt.service-provider';
 import { FactoryCriteriaPermissionInitService } from './services/factory-criteria-permission-init.service';
-import { FactoryRedirectComponentRouteInitService } from './services/factory-redirect-component-route-init.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './services/system/token.interceptor';
 import { OAuthStorage, OAuthModule } from 'angular-oauth2-oidc';
@@ -49,10 +48,6 @@ import { JliAuthModule } from 'projects/jli-auth/src/public_api';
     {
       provide: 'IFactoryCriteriaPermissionInitService',
       useClass: FactoryCriteriaPermissionInitService
-    },
-    {
-      provide: 'IFactoryRedirectComponentRouteInitService',
-      useClass: FactoryRedirectComponentRouteInitService
     },
     {
       provide: 'IUserService',

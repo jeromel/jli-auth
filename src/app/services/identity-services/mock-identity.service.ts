@@ -21,7 +21,6 @@ export class MockIdentityService implements IIdentityService {
         this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
 
         this.oAuthService.events.subscribe(e => {
-            console.debug("oauth/oidc event", e);
         });
 
         this.oAuthService.setupAutomaticSilentRefresh();

@@ -12,11 +12,12 @@ export class AuthGuardService implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot): Promise<boolean> | boolean {
         let ret: boolean = false;
-        console.debug('canActivate');
+
         if (true == this.identityService.isUserAuthenticated()) {
-            console.debug('user is authenticated');
-            if (true == this.authorizationService.hasOneOfPermissions(route.data['auth'])) {
-                console.debug('user hasOneOfPermissions');
+            if (false == route.data['auth'] || 0 == route.data['auth'].length) {
+                ret = true;
+            }
+            else if (true == this.authorizationService.hasOneOfPermissions(route.data['auth'])) {
                 ret = true;
             }
         }
