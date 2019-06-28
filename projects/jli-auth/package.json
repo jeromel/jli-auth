@@ -1,6 +1,12 @@
 {
   "name": "jli-auth",
-  "version": "0.1.1",
+  "license": "MIT",
+  "version": "0.2.0",
+  "readme": "https://github.com/jeromel/jli-auth/blob/develop/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeromel/jli-auth.git"
+  },
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"
