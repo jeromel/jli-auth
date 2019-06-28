@@ -60,7 +60,7 @@ export class AuthorizationService implements IAuthorizationService {
         
         if (perms) {
             if (this._permissions) {
-                if (perms.length == 0 || this._permissions.some(permission => {
+                if (this._permissions.some(permission => {
                     return perms.some(pp => { return pp.Name == permission.Name});
                 })) {
                     ret = true;
