@@ -13,7 +13,6 @@ export class JliLogoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.debug('logout');
     this.identityService.logout();
   }
 
