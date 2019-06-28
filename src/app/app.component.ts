@@ -20,10 +20,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.debug('app init');
+    this.authInitializerService.whenInitialized().subscribe(() => {
+      this.redirectHome();
+    });
     this.authInitializerService.initialize();
   }
 
+  public redirectHome(): void {
+    let qParam: Params;
+
+    this.router.navigate(['home'], { queryParams: qParam });
+  }
   public simulateCallbackReturnFromIdSrv(): void {
     let callbackNamePage: string = 'callback';
     let qParam: Params;
