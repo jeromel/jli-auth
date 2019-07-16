@@ -1,12 +1,13 @@
 import { IAuthInitializerService } from './iauth-initializer-service';
 import { Inject } from '@angular/core';
 import { IIdentityService } from '../identity-services/iidentity.service';
-import { Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IAuthorizationService } from '../auth-services/iauthorization.service';
 import { IUserService } from '../user-services/iuser.service';
 import { IFactoryCriteriaPermissionInitService } from '../ifactory-criteria-permission-init.service';
 import { CriteriaPermission } from '../../models/models';
 import { Subject, Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 export class AuthInitializerService implements IAuthInitializerService{
     constructor(
@@ -14,7 +15,6 @@ export class AuthInitializerService implements IAuthInitializerService{
         @Inject('IAuthorizationService') private authorizationService: IAuthorizationService,
         @Inject('IUserService') private userService: IUserService,
         @Inject('IFactoryCriteriaPermissionInitService') private factoryCriteriaPermissionInitService: IFactoryCriteriaPermissionInitService,
-        private router: Router,
     ) {
 
     }
@@ -29,13 +29,17 @@ export class AuthInitializerService implements IAuthInitializerService{
             this.getUserAuthInformation();
           } else {
             this.identityService.initialize();
-            this.identityService.whenUserAuthenticated().subscribe(res => {
+            this.unsubscribe.next();
+
+            this.identityService.whenUserAuthenticated().pipe(takeUntil(this.unsubscribe)).subscribe(res => {
               if (true == res) {
                 this.getUserAuthInformation();
               }
             });
           }
     }
+
+    private unsubscribe: Subject<void> = new Subject();
 
     private getUserAuthInformation(): void {
         this.userService.getUser(false).subscribe(user => {

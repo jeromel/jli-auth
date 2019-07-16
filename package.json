@@ -1,6 +1,6 @@
 {
   "name": "test-id-auth",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "readme": "https://github.com/jeromel/jli-auth/blob/develop/README.md",
   "scripts": {
