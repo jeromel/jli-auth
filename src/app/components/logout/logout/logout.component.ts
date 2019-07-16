@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { IIdentityService } from 'jli-auth/jli-auth';
+import { IIdentityService } from 'projects/jli-auth/src/public_api';
 
 @Component({
   selector: 'app-logout',
@@ -13,7 +13,6 @@ export class LogoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.debug('logout');
     this.identityService.logout();
   }
 

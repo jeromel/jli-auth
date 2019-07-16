@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
     this.userService.getUser(false).subscribe(user => {
       this.User = user;
     });
-    console.debug('GetPermissions ??');
     this.authorizationService.getPermissions().subscribe(permissions => {
       this.Permissions = permissions;
     })
