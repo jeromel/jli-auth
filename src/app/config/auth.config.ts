@@ -14,9 +14,9 @@ export const authConfig: AuthConfig = {
     silentRefreshRedirectUri: "http://localhost:4200/silent-refresh.html",
     
     // The SPA's id. The SPA is registerd with this id at the auth-server
-    clientId: "spa",
+    clientId: "spacode",
     
-    responseType: "id_token token",
+    responseType: "code",
     showDebugInformation: true,
 
     // set the scope for the permissions the client should request
