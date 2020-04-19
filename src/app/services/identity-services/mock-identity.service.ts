@@ -15,17 +15,14 @@ export class MockIdentityService implements IIdentityService {
 
     public configure(): void {
         this.oAuthService.configure(authConfig);
-        this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
 
         this.oAuthService.events.subscribe(e => {
-            console.debug(e);
             if (e.type == "token_expires") {
                 this.oAuthService.silentRefresh()
                 .then(info => console.debug('refresh ok', info))
                 .catch(err => console.error('refresh error', err));
             }
         });
-
         //this.oAuthService.setupAutomaticSilentRefresh();
     }
     public isUserAuthenticated(): boolean {
@@ -39,12 +36,13 @@ export class MockIdentityService implements IIdentityService {
     }
 
     public initialize(): void {
-        this.oAuthService.loadDiscoveryDocumentAndTryLogin().then( (info) => {
+        this.oAuthService.loadDiscoveryDocumentAndLogin().then( (info) => {
             if (false === this.isUserAuthenticated()) {
-                this.oAuthService.initImplicitFlow();
             }
             else {
-                this.subWhenUserAuthenticated.next(true);
+                this.oAuthService.loadUserProfile().then((t) => {
+                    this.subWhenUserAuthenticated.next(true);
+                });
             }
           });
     }
