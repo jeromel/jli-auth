@@ -9,11 +9,10 @@ import { IAuthInitializerService } from '../../services/auth-initializer-service
 export class JliCallbackComponent implements OnInit {
 
   constructor(
-    @Inject('IAuthInitializerService') private authInitializerService: IAuthInitializerService
     ) {
   }
 
   ngOnInit() {
-    this.authInitializerService.initialize();
+    
   }
 }

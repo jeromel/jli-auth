@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     this.authInitializerService.whenInitialized().subscribe(() => {
       this.redirectHome();
     });
+    
     this.authInitializerService.initialize();
   }
 
