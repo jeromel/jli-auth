@@ -21,9 +21,15 @@ export class MockIdentityService implements IIdentityService {
         this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
 
         this.oAuthService.events.subscribe(e => {
+            console.debug(e);
+            if (e.type == "token_expires") {
+                this.oAuthService.silentRefresh()
+                .then(info => console.debug('refresh ok', info))
+                .catch(err => console.error('refresh error', err));
+            }
         });
 
-        this.oAuthService.setupAutomaticSilentRefresh();
+        //this.oAuthService.setupAutomaticSilentRefresh();
     }
     public isUserAuthenticated(): boolean {
         return (this.oAuthService.hasValidIdToken() && this.oAuthService.hasValidAccessToken());
