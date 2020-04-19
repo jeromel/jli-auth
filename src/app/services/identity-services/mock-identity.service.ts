@@ -6,12 +6,9 @@ import { authConfig } from 'src/app/config/auth.config';
 
 @Injectable()
 export class MockIdentityService implements IIdentityService {
-    private _isUserAuthenticated: boolean;
-
     constructor(
         private oAuthService: OAuthService
     ) {
-        this._isUserAuthenticated = false;
         this.subWhenUserAuthenticated = new Subject<boolean>();
         this.configure();
     }
