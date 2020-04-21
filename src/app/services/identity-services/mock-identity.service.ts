@@ -23,7 +23,8 @@ export class MockIdentityService implements IIdentityService {
                 .catch(err => console.error('refresh error', err));
             }
         });
-        //this.oAuthService.setupAutomaticSilentRefresh();
+        
+        this.oAuthService.setupAutomaticSilentRefresh();
     }
     public isUserAuthenticated(): boolean {
         return (this.oAuthService.hasValidIdToken() && this.oAuthService.hasValidAccessToken());
